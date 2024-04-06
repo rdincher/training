@@ -4,7 +4,7 @@ target_sources(HelloWorld
     PRIVATE
         HelloWorld.cpp
     PUBLIC
-        HelloWorld.H
+        HelloWorld.h
     )
 
 target_include_directories(HelloWorld
