@@ -1,0 +1,38 @@
+name: Build NextJS
+run-name: Building NextJS
+on:
+  push:
+    paths:
+      - NextJS/**
+  workflow_dispatch:
+
+jobs:
+  Build-NextJS:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+      
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: "javascript-typescript"
+
+      - name: Build
+        run: npm run build
+        shell: bash
+      
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: Running Unit Tests
+        run: echo "No Tests"
+        shell: bash
+      
+    #   - name: Upload Artifact
+    #     uses: actions/upload-artifact@v4
+    #     with:
+    #       name: CPP_Hello_World
+    #       path: build/src/HelloWorldSample
