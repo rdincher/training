@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - CPP/**
+  workflow_dispatch:
 
 jobs:
   Build-CPP:
