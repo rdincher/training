@@ -20,9 +20,11 @@ jobs:
         with:
           languages: "javascript-typescript"
     
-    #   - name: Preparing Build
-    #     run: cd NextJS/nextjs-blog
-    #     shell: bash
+      - name: Preparing Build
+        run: |
+            cd NextJS/nextjs-blog
+            npm install
+        shell: bash
 
       - name: Build
         run: |
