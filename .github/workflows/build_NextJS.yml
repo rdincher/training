@@ -21,7 +21,7 @@ jobs:
           languages: "javascript-typescript"
     
       - name: Preparing Build
-        run: cd NextJS\nextjs-blog
+        run: cd NextJS/nextjs-blog
         shell: bash
 
       - name: Build
