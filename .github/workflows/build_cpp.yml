@@ -12,7 +12,7 @@ jobs:
           submodules: 'true'
 
       - name: Preparing Build
-        run: cmake -B build
+        run: cmake -B build CPP
         shell: bash
 
       - name: Build
