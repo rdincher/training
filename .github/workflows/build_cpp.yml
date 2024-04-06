@@ -10,6 +10,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: 'true'
+      
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init
+        with:
+          languages: "cpp"
 
       - name: Preparing Build
         run: cmake -B build CPP
@@ -18,6 +23,9 @@ jobs:
       - name: Build
         run: cmake --build build
         shell: bash
+      
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze
 
       - name: Running Unit Tests
         run: cmake -E chdir build ctest
