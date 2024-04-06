@@ -19,6 +19,10 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: "javascript-typescript"
+    
+      - name: Preparing Build
+        run: cd NextJS\nextjs-blog
+        shell: bash
 
       - name: Build
         run: npm run build
