@@ -1,0 +1,33 @@
+name: Build C++
+run-name: ${{ github.actor }} testing C++ Build
+on: [push]
+
+jobs:
+  Build-CPP:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+      
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: "cpp"
+
+      - name: Preparing Build
+        run: cmake -B build CPP
+        shell: bash
+
+      - name: Build
+        run: cmake --build build
+        shell: bash
+      
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: Running Unit Tests
+        run: cmake -E chdir build ctest
+        shell: bash
+
