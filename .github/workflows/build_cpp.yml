@@ -1,0 +1,20 @@
+name: Build C++
+run-name: ${{ github.actor }} testing C++ Build
+on: [push]
+
+jobs:
+  Build-CPP:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Preparing Build
+      run: cmake -B build
+      shell: bash
+    
+    - name: Build
+      run: cmake --build build
+      shell: bash
+    
+    - name: Running Unit Tests
+      run: cmake -E chdir build ctest
+      shell: bash
+      
