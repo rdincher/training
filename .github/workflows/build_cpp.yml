@@ -1,6 +1,10 @@
 name: Build C++
 run-name: ${{ github.actor }} testing C++ Build
-on: [push]
+on:
+  push:
+    paths:
+      - CPP/**
+  workflow_dispatch:
 
 jobs:
   Build-CPP:
@@ -30,4 +34,10 @@ jobs:
       - name: Running Unit Tests
         run: cmake -E chdir build ctest
         shell: bash
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CPP_Hello_World
+          path: build/src/HelloWorldSample
 
