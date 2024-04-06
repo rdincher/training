@@ -4,17 +4,22 @@ on: [push]
 
 jobs:
   Build-CPP:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Preparing Build
-      run: cmake -B build
-      shell: bash
-    
-    - name: Build
-      run: cmake --build build
-      shell: bash
-    
-    - name: Running Unit Tests
-      run: cmake -E chdir build ctest
-      shell: bash
-      
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Preparing Build
+        run: cmake -B build
+        shell: bash
+
+      - name: Build
+        run: cmake --build build
+        shell: bash
+
+      - name: Running Unit Tests
+        run: cmake -E chdir build ctest
+        shell: bash
+
