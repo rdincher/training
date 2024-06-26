@@ -1,1 +1,10 @@
-s
+name: "Print Echo"
+
+inputs:
+  greeting:
+    type: string
+runs:
+  using: "composite"
+  steps:
+    - name: print
+      run: echo "Hello ${{inputs.greeting}}"
