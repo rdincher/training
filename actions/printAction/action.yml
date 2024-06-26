@@ -7,4 +7,5 @@ runs:
   using: "composite"
   steps:
     - name: print
+      shell: bash
       run: echo "Hello ${{inputs.greeting}}"
