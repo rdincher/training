@@ -1,7 +1,8 @@
 #include <iostream>
 #include "HelloWorld/HelloWorld.h"
+using namespace std;
 
 int main() {
-    std::cout << get_hello_message() << std::ends;
+    cout << get_hello_message() << endl;
     return 0;
 }

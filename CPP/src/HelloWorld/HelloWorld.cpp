@@ -1,5 +1,6 @@
 #include "HelloWorld.h"
+using namespace std;
 
-std::string get_hello_message() {
+string get_hello_message() {
     return "Hello, World!";
 }
